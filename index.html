@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Dating Platform (Prototype)</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>Smart Dating Platform</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#register">Register/Login</a>
+      <a href="#catalogue">User Catalogue</a>
+      <a href="#match">Matching</a>
+      <a href="#chat">Live Chat</a>
+      <a href="#reviews">Feedback & Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="#about">About</a>
+    </nav>
+    <div id="authStatus"></div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section id="home" class="card">
+      <h2>Welcome 👋</h2>
+      <p>This is a basic front‑end prototype built with HTML/CSS/JS and <strong>localStorage</strong>. It demonstrates the required features for your assignment without a backend.</p>
+      <ul>
+        <li>Register/Login to create a test user profile</li>
+        <li>Browse the <em>Catalogue</em> and filter by age, gender, hobbies, interests</li>
+        <li>Click <em>Match</em> to get simple recommendations</li>
+        <li>Start a <em>Chat</em> with a matched user (stored locally)</li>
+        <li>Leave <em>Reviews</em> about matching quality</li>
+      </ul>
+      <p class="note">Note: refresh or clear localStorage to reset the demo. No real accounts or servers.</p>
+    </section>
+
+    <!-- REGISTER / LOGIN -->
+    <section id="register" class="card">
+      <h2>Register / Login</h2>
+      <div class="grid-2">
+        <form id="registerForm">
+          <h3>Create account</h3>
+          <label>Username <input required name="username" /></label>
+          <label>Password <input required type="password" name="password" /></label>
+          <label>Age <input required type="number" name="age" min="18" max="99"/></label>
+          <label>Gender
+            <select name="gender">
+              <option value="female">Female</option>
+              <option value="male">Male</option>
+              <option value="non-binary">Non-binary</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
+          <label>Hobbies (comma separated) <input name="hobbies" placeholder="hiking, cooking, games"/></label>
+          <label>Interests (comma separated) <input name="interests" placeholder="music, tech, movies"/></label>
+          <button type="submit">Register</button>
+        </form>
+
+        <form id="loginForm">
+          <h3>Login</h3>
+          <label>Username <input required name="username" /></label>
+          <label>Password <input required type="password" name="password" /></label>
+          <button type="submit">Login</button>
+          <button type="button" id="logoutBtn">Logout</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- CATALOGUE -->
+    <section id="catalogue" class="card">
+      <h2>User Catalogue</h2>
+      <div class="filters">
+        <label>Min Age <input type="number" id="minAge" min="18" max="99"/></label>
+        <label>Max Age <input type="number" id="maxAge" min="18" max="99"/></label>
+        <label>Gender
+          <select id="filterGender">
+            <option value="">Any</option>
+            <option value="female">Female</option>
+            <option value="male">Male</option>
+            <option value="non-binary">Non-binary</option>
+            <option value="other">Other</option>
+          </select>
+        </label>
+        <label>Hobby keyword <input id="filterHobby" placeholder="e.g., hiking"/></label>
+        <label>Interest keyword <input id="filterInterest" placeholder="e.g., movies"/></label>
+        <button id="applyFilters">Apply</button>
+        <button id="seedBtn" title="Add sample users for demo">Seed Samples</button>
+      </div>
+      <div id="userList" class="list"></div>
+    </section>
+
+    <!-- MATCHING -->
+    <section id="match" class="card">
+      <h2>Matching System</h2>
+      <p>Click to get simple suggestions based on shared hobbies/interests and similar age. This is a naive demo score.</p>
+      <button id="findMatchesBtn">Find Matches for Me</button>
+      <div id="matchResults" class="list"></div>
+    </section>
+
+    <!-- LIVE CHAT -->
+    <section id="chat" class="card">
+      <h2>Live Chat (Local)</h2>
+      <p>Select a matched user to open a conversation. Messages are stored in your browser only.</p>
+      <div class="grid-2">
+        <div>
+          <h3>My Matches</h3>
+          <div id="chatMatches" class="list"></div>
+        </div>
+        <div>
+          <h3 id="chatWith">Conversation</h3>
+          <div id="chatBox" class="chat-box"></div>
+          <form id="chatForm">
+            <input id="chatInput" placeholder="Type a message..." />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="card">
+      <h2>Feedback & Reviews</h2>
+      <form id="reviewForm" class="grid-2">
+        <label>Rating
+          <select name="rating" id="rating">
+            <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
+          </select>
+        </label>
+        <label>Comment
+          <input id="reviewComment" placeholder="Your thoughts on matching quality"/>
+        </label>
+        <button type="submit">Submit Review</button>
+      </form>
+      <div id="reviewList" class="list"></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card">
+      <h2>Contact Us</h2>
+      <p>Email: support@smartdating.example</p>
+      <p>Support hours: Mon–Fri, 9:00–17:00</p>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="card">
+      <h2>About</h2>
+      <p>This educational prototype was created for a Scrum sprint review to demonstrate basic features of a Smart Dating Platform. No real data; privacy‑safe demo only.</p>
+    </section>
+  </main>
+
+  <footer>
+    <small>© 2025 Smart Dating (Prototype)</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
